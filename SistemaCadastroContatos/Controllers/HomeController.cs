@@ -11,16 +11,14 @@ namespace SistemaCadastroContatos.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
 
         public IActionResult Index()
         {
-            return View();
+            HomeModel home = new HomeModel();
+            home.Nome = "Gabriel Martins";
+            home.Email = "gabrielmartinsdev@gamil.com";
+
+            return View(home);
         }
 
         public IActionResult Privacy()
