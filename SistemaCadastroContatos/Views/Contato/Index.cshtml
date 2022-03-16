@@ -1,11 +1,43 @@
-﻿@model HomeModel
-
-@{
+﻿@{
     ViewData["Title"] = "Listagem de contatos";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Listagem de contatos, @Model.Nome</h1>
-    <p>Sistema de controle de contatos</p>
-    <span>Seu e-mail é: @Model.Email </span>
+    <h1 class="display-4">Listagem de contatos</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Celular</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto@gmail.com</td>
+                <td>11 9837378842</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton@email.com</td>
+                <td>11 911178842</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Larry the Bird</td>
+                <td>Thornton@email.com</td>
+                <td>12 3234242442</td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td>Fabiano</td>
+                <td>fabiano@email.com</td>
+                <td>12 987655442</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
