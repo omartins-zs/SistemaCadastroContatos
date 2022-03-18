@@ -8,5 +8,20 @@ namespace SistemaCadastroContatos.Controllers
         {
             return View();
         }
+
+        public IActionResult Criar()
+        {
+            return View();
+        }
+
+        public IActionResult Editar()
+        {
+            return View();
+        }
+
+        public IActionResult ApagarConfirmacao()
+        {
+            return View();
+        }
     }
 }
