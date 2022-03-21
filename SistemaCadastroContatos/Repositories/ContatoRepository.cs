@@ -10,6 +10,13 @@ namespace SistemaCadastroContatos.Repositories
         {
             _bancoContext = bancoContext;
         }
-       
+        public ContatoModel Adicionar(ContatoModel contato)
+        {
+            //  Adicionar no banco de dados
+            _bancoContext.Contatos.Add(contato);
+            _bancoContext.SaveChanges();
+
+            return contato;
+        }
     }
 }
