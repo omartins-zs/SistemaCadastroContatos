@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SistemaCadastroContatos.Models;
 using SistemaCadastroContatos.Repositories;
+using System.Collections.Generic;
 
 namespace SistemaCadastroContatos.Controllers
 {
@@ -13,7 +14,8 @@ namespace SistemaCadastroContatos.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            List<ContatoModel> contatos = _contatoRepository.BuscarTodos();
+            return View(contatos);
         }
 
         public IActionResult Criar()
