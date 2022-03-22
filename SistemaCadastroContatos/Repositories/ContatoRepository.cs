@@ -12,6 +12,11 @@ namespace SistemaCadastroContatos.Repositories
         {
             _bancoContext = bancoContext;
         }
+        public ContatoModel ListarPorId(int id)
+        {
+            return _bancoContext.Contatos.FirstOrDefault(x => x.Id == id);
+            
+        }
 
         public List<ContatoModel> BuscarTodos()
         {
@@ -27,6 +32,6 @@ namespace SistemaCadastroContatos.Repositories
             return contato;
         }
 
-        
+       
     }
 }
