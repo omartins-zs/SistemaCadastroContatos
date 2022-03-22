@@ -40,5 +40,12 @@ namespace SistemaCadastroContatos.Controllers
             _contatoRepository.Adicionar(contato);
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public IActionResult Alterar(ContatoModel contato)
+        {
+            _contatoRepository.Atualizar(contato);
+            return RedirectToAction("Index");
+        }
     }
 }
