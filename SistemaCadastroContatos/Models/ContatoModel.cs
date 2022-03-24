@@ -6,13 +6,13 @@ namespace SistemaCadastroContatos.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Digite o nome do contato")]
         public string Nome { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Digite o e-mail do contato")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Digite o celular do contato")]
         public string Celular { get; set; }
     }
 }
