@@ -3,6 +3,12 @@
 
 // Write your JavaScript code.
 
+// Script do Jquery DataTables
+$(document).ready(function () {
+    $('#myTable').DataTable();
+});
+
+
 $('.close-alert').click(function () {
     $('.alert').hide('hide');
 })
