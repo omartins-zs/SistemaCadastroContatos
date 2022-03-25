@@ -5,7 +5,7 @@
 
 // Script do Jquery DataTables
 $(document).ready(function () {
-    $('#myTable').DataTable();
+    $('#table-contatos').DataTable();
 });
 
 
