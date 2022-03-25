@@ -37,8 +37,28 @@ namespace SistemaCadastroContatos.Controllers
 
         public IActionResult Apagar(int id)
         {
-            _contatoRepository.Apagar(id);
-            return RedirectToAction("Index");
+            try
+            {
+                bool apagado = _contatoRepository.Apagar(id);
+
+                if (apagado)
+                {
+                    TempData["MensagemSucesso"] = "Contato excluido com sucesso";
+
+                }
+                else
+                {
+                    TempData["MensagemErro"] = $"Ops, nao conseguimos apagar seu contato";
+                }
+                return RedirectToAction("Index");
+
+            }
+            catch (System.Exception erro)
+            {
+                TempData["MensagemErro"] = $"Ops, nao conseguimos apagar seu contato, mais detalhe do erro: {erro.Message} ";
+
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
@@ -49,7 +69,7 @@ namespace SistemaCadastroContatos.Controllers
                 if (ModelState.IsValid)
                 {
                     _contatoRepository.Adicionar(contato);
-                    TempData["MensagemSucessso"] = "Contato cadastrado com sucesso";
+                    TempData["MensagemSucesso"] = "Contato cadastrado com sucesso";
                     return RedirectToAction("Index");
                 }
                 return View(contato);
@@ -70,7 +90,7 @@ namespace SistemaCadastroContatos.Controllers
                 if (ModelState.IsValid)
                 {
                     _contatoRepository.Atualizar(contato);
-                    TempData["MensagemSucessso"] = "Contato alterado com sucesso";
+                    TempData["MensagemSucesso"] = "Contato alterado com sucesso";
                     return RedirectToAction("Index");
                 }
                 return View("Editar", contato);
