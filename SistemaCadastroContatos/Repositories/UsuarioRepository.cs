@@ -43,6 +43,7 @@ namespace SistemaCadastroContatos.Repositories
             usuarioDB.Nome = usuario.Nome;
             usuarioDB.Email = usuario.Email;
             usuarioDB.Login = usuario.Login;
+            usuarioDB.Perfil = usuario.Perfil;
             usuarioDB.DataAtualizacao = DateTime.Now;
 
             _bancoContext.Usuarios.Update(usuarioDB);
