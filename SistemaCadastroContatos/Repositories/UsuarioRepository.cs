@@ -1,5 +1,6 @@
 ﻿using SistemaCadastroContatos.Data;
 using SistemaCadastroContatos.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -26,6 +27,7 @@ namespace SistemaCadastroContatos.Repositories
         public UsuarioModel Adicionar(UsuarioModel usuario)
         {
             //  Adicionar no banco de dados
+            usuario.DataCadastro = DateTime.Now;
             _bancoContext.Usuarios.Add(usuario);
             _bancoContext.SaveChanges();
 
@@ -41,6 +43,7 @@ namespace SistemaCadastroContatos.Repositories
             usuarioDB.Nome = usuario.Nome;
             usuarioDB.Email = usuario.Email;
             usuarioDB.Login = usuario.Login;
+            usuarioDB.DataAtualizacao = DateTime.Now;
 
             _bancoContext.Usuarios.Update(usuarioDB);
             _bancoContext.SaveChanges();
