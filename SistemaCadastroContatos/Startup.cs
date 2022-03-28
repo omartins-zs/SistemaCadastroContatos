@@ -28,6 +28,8 @@ namespace SistemaCadastroContatos
         {
             services.AddControllersWithViews();
             services.AddEntityFrameworkSqlServer().AddDbContext<BancoContext>(o => o.UseSqlServer(Configuration.GetConnectionString("Database")));
+            
+            services.AddScoped<IContatoRepository, ContatoRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
         
         }
