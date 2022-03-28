@@ -1,4 +1,6 @@
-﻿namespace SistemaCadastroContatos.Models
+﻿using SistemaCadastroContatos.Enums;
+
+namespace SistemaCadastroContatos.Models
 {
     public class UsuarioModel
     {
@@ -6,5 +8,6 @@
         public string Nome { get; set; }
         public string Login { get; set; }
         public string Email { get; set; }
+        public PerfilEnum Perfil { get; set; }
     }
 }
