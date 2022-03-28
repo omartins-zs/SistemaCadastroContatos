@@ -1,4 +1,5 @@
-﻿@model UsuarioModel
+﻿@using SistemaCadastroContatos.Enums
+@model UsuarioModel
 @{
     ViewData["Title"] = "Criar usuario";
 }
@@ -20,11 +21,29 @@
         <input type="text" asp-for="Email" class="form-control" placeholder="Digite o e-mail do usuario">
         @Html.ValidationMessageFor(x => x.Email)
     </div>
+
     <div class="mb-3">
         <label for="celular">Login</label>
         <input type="text" asp-for="Login" class="form-control" placeholder="Digite o Login do usuario">
         @Html.ValidationMessageFor(x => x.Login)
     </div>
+
+    <div class="mb-3">
+        <label for="celular">Perfil</label>
+        <input type="text" asp-for="Perfil" class="form-control" placeholder="Digite o perfil do usuario">
+        <select>
+            <option value="0">Selecione</option>
+            <option value="@PerfilEnum.Admin">Administrador</option>
+            <option value="@PerfilEnum.Padrao">Padrão</option>
+        </select>
+    </div>
+
+       <div class="mb-3">
+        <label for="celular">Senha</label>
+        <input type="password" asp-for="Senha" class="form-control" placeholder="Digite o senha do usuario">
+        @Html.ValidationMessageFor(x => x.Senha)
+    </div>
+
 
     <button type="submit" class="btn btn-primary btn-block">Adicionar</button>
     <a class="btn btn-secondary btn-block" asp-controller="Contato" asp-action="Index" role="button">Voltar</a>
