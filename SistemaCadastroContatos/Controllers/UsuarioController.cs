@@ -22,6 +22,37 @@ namespace SistemaCadastroContatos.Controllers
         {
             return View();
         }
+        public IActionResult ApagarConfirmacao(int id)
+        {
+            UsuarioModel usuario = _usuarioRepository.ListarPorId(id);
+            return View(usuario);
+        }
+
+        public IActionResult Apagar(int id)
+        {
+            try
+            {
+                bool apagado = _usuarioRepository.Apagar(id);
+
+                if (apagado)
+                {
+                    TempData["MensagemSucesso"] = "Usuario excluido com sucesso";
+
+                }
+                else
+                {
+                    TempData["MensagemErro"] = $"Ops, nao conseguimos apagar seu usuario";
+                }
+                return RedirectToAction("Index");
+
+            }
+            catch (System.Exception erro)
+            {
+                TempData["MensagemErro"] = $"Ops, nao conseguimos apagar seu usuario, mais detalhe do erro: {erro.Message} ";
+
+                return RedirectToAction("Index");
+            }
+        }
 
         [HttpPost]
         public IActionResult Criar(UsuarioModel usuario)
