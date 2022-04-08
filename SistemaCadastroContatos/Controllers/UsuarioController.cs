@@ -27,6 +27,11 @@ namespace SistemaCadastroContatos.Controllers
             UsuarioModel usuario = _usuarioRepository.ListarPorId(id);
             return View(usuario);
         }
+        public IActionResult Editar(int id)
+        {
+            UsuarioModel usuario = _usuarioRepository.ListarPorId(id);
+            return View(usuario);
+        }
 
         public IActionResult Apagar(int id)
         {
@@ -71,6 +76,37 @@ namespace SistemaCadastroContatos.Controllers
             {
                 // ' $ ' para poder concatenar na mensagem
                 TempData["MensagemErro"] = $"Ops, nao conseguimos cadastrar seu usuario, tente novamente, detalhe do erro: {erro.Message} ";
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult Editar(UsuarioSemSenhaModel usuarioSemSenhaModel)
+        {
+            try
+            {
+                UsuarioModel usuario = null;
+                if (ModelState.IsValid)
+                {
+                    usuario = new UsuarioModel()
+                    {
+                        Id = usuarioSemSenhaModel.Id,
+                        Nome = usuarioSemSenhaModel.Nome,
+                        Login = usuarioSemSenhaModel.Login,
+                        Email = usuarioSemSenhaModel.Email,
+                        Perfil = usuarioSemSenhaModel.Perfil
+                    };
+
+                    usuario = _usuarioRepository.Atualizar(usuario);
+                    TempData["MensagemSucesso"] = "Usuario alterado com sucesso";
+                    return RedirectToAction("Index");
+                }
+                return View(usuario);
+            }
+            catch (System.Exception erro)
+            {
+
+                TempData["MensagemErro"] = $"Ops, nao conseguimos atualizar seu usuario, tente novamente, detalhe do erro: {erro.Message} ";
                 return RedirectToAction("Index");
             }
         }

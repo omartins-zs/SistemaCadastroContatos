@@ -17,8 +17,9 @@ namespace SistemaCadastroContatos.Models
         [Required(ErrorMessage = "Digite o e-mail do usuario")]
         [EmailAddress(ErrorMessage = "O e-mail informado não é valido!")]
         public string Email { get; set; }
-        
-        public PerfilEnum Perfil { get; set; }
+
+        [Required(ErrorMessage = "informe o perfil do usuario")]
+        public PerfilEnum? Perfil { get; set; }
 
         [Required(ErrorMessage = "Digite o senha do usuario")]
         public string Senha { get; set; }
