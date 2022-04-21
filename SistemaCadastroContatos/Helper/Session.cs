@@ -29,7 +29,7 @@ namespace SistemaCadastroContatos.Helper
 
         public void RemoverSessionDoUsuario()
         {
-            throw new System.NotImplementedException();
+            _httpContext.HttpContext.Session.Remove("sessionUsuarioLogado");
         }
     }
 }
