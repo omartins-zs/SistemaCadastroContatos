@@ -7,7 +7,7 @@ namespace SistemaCadastroContatos.Models
         [Required(ErrorMessage = "Digite o login")]
         public string Login { get; set; }
 
-        [Required(ErrorMessage = "Digite o login")]
+        [Required(ErrorMessage = "Digite o senha")]
         public string Senha { get; set; }
     }
 }
