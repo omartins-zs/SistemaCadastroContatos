@@ -26,10 +26,19 @@ namespace SistemaCadastroContatos.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    if (loginModel.Login == "adm" && loginModel.Senha == "123")
+
+                    UsuarioModel usuario = _usuarioRepository.BuscarPorLogin(loginModel.Login);
+
+                    if (usuario != null)
                     {
-                        return RedirectToAction("Index", "Home");
+                        if (usuario.SenhaValida(loginModel.Senha))
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
+
+                        TempData["MensagemErro"] = $"Senha do usuário é inválida, tente novamente.";
                     }
+
                     TempData["MensagemErro"] = $"Usuário e/ou senha inválido(s). Por favor, tente novamente.";
                 }
                 return View("Index");
