@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SistemaCadastroContatos.Data;
+using SistemaCadastroContatos.Helper;
 using SistemaCadastroContatos.Repositories;
 using System;
 using System.Collections.Generic;
@@ -34,7 +35,14 @@ namespace SistemaCadastroContatos
 
             services.AddScoped<IContatoRepository, ContatoRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-        
+
+            services.AddScoped<ISession, Session>;
+
+            services.AddSession(o =>
+            {
+                o.Cookie.HttpOnly = true;
+                o.Cookie.IsEssential = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +64,8 @@ namespace SistemaCadastroContatos
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
