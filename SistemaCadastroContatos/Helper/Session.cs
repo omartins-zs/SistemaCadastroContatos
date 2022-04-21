@@ -14,7 +14,11 @@ namespace SistemaCadastroContatos.Helper
         }
         public UsuarioModel BuscarSessionDoUsuario()
         {
-            throw new System.NotImplementedException();
+            string sessionUsuario = _httpContext.HttpContext.Session.GetString("sessionUsuarioLogado");
+
+            if (string.IsNullOrEmpty(sessionUsuario)) return null;
+
+            return JsonConvert.DeserializeObject<UsuarioModel>(sessionUsuario);
         }
 
         public void CriarSessionDoUsuario(UsuarioModel usuario)
