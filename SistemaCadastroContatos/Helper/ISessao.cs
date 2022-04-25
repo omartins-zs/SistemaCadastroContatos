@@ -2,7 +2,7 @@
 
 namespace SistemaCadastroContatos.Helper
 {
-    public interface ISession
+    public interface ISessao
     {
         void CriarSessionDoUsuario(UsuarioModel usuario);
 

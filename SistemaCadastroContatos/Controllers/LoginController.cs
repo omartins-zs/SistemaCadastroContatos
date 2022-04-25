@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using SistemaCadastroContatos.Helper;
+using Microsoft.AspNetCore.Mvc;
 using SistemaCadastroContatos.Models;
 using SistemaCadastroContatos.Repositories;
 using System;
@@ -9,14 +11,27 @@ namespace SistemaCadastroContatos.Controllers
     {
         private readonly IUsuarioRepository _usuarioRepository;
 
-        public LoginController(IUsuarioRepository usuarioRepository)
+        private readonly ISessao _sessao;
+
+        public LoginController(IUsuarioRepository usuarioRepository,
+                               ISessao sessao)
         {
             _usuarioRepository = usuarioRepository;
+            _sessao = sessao;
         }
 
         public IActionResult Index()
         {
+            // Se o usuario ja estiver logado direcionar para a HOME
+            if (_sessao.BuscarSessionDoUsuario() != null) return RedirectToAction("Index", "Home");
+
             return View();
+        }
+
+        public IActionResult Sair()
+        {
+            _sessao.RemoverSessionDoUsuario();
+            return RedirectToAction("Index", "Login");
         }
 
         [HttpPost]
@@ -32,7 +47,8 @@ namespace SistemaCadastroContatos.Controllers
                     if (usuario != null)
                     {
                         if (usuario.SenhaValida(loginModel.Senha))
-                        {
+                        {                    
+                            _sessao.CriarSessionDoUsuario(usuario);
                             return RedirectToAction("Index", "Home");
                         }
 

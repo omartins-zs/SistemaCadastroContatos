@@ -4,11 +4,11 @@ using SistemaCadastroContatos.Models;
 
 namespace SistemaCadastroContatos.Helper
 {
-    public class Session : ISession
+    public class Sessao : ISessao
     {
         private readonly IHttpContextAccessor _httpContext;
 
-        public Session(IHttpContextAccessor httpContext)
+        public Sessao(IHttpContextAccessor httpContext)
         {
             _httpContext = httpContext;
         }
@@ -24,7 +24,7 @@ namespace SistemaCadastroContatos.Helper
         public void CriarSessionDoUsuario(UsuarioModel usuario)
         {
             string valor = JsonConvert.SerializeObject(usuario);
-            _httpContext.HttpContext.Session.SetString("sessionUsuarioLogado", valor) ;
+            _httpContext.HttpContext.Session.SetString("sessionUsuarioLogado", valor);
         }
 
         public void RemoverSessionDoUsuario()

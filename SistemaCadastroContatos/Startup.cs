@@ -36,7 +36,7 @@ namespace SistemaCadastroContatos
             services.AddScoped<IContatoRepository, ContatoRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
-            services.AddScoped<ISession, Session>;
+            services.AddScoped<ISessao, Sessao>();
 
             services.AddSession(o =>
             {
