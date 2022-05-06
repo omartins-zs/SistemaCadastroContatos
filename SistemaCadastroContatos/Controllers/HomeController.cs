@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SistemaCadastroContatos.Filters;
 using SistemaCadastroContatos.Models;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace SistemaCadastroContatos.Controllers
 {
+    [PageUsuarioLogado]
     public class HomeController : Controller
     {
 
