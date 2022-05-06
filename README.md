@@ -56,3 +56,16 @@ $ Update-Database -Context BancoContext
 
 <br>
 
+
+## 📑Utilitarios
+
+
+* Uso do [BootStrap 4.1](https://getbootstrap.com/docs/4.1/getting-started/introduction/) via CDN 
+
+* Uso do [Font Awesome](https://fontawesome.com/) via CDN 
+
+* Traducão do plugin DataTables no Repositorio do Professor [Acaciano](https://github.com/Acaciano/crud-contatos/blob/master/README.md) ou [Aqui](https://github.com/omartins-zs/SistemaCadastroContatos/tree/master/SistemaCadastroContatos/TraducaoDataTables)
+
+* Importando Plugin Jquery [DataTables](https://datatables.net/)
+
+
