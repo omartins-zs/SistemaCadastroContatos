@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using SistemaCadastroContatos.Models;
 using SistemaCadastroContatos.Repositories;
 using System;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace SistemaCadastroContatos.Controllers
 {
@@ -24,6 +25,12 @@ namespace SistemaCadastroContatos.Controllers
         {
             // Se o usuario ja estiver logado direcionar para a HOME
             if (_sessao.BuscarSessionDoUsuario() != null) return RedirectToAction("Index", "Home");
+
+            return View();
+        }
+
+        public IActionResult RedefinirSenha()
+        {
 
             return View();
         }
