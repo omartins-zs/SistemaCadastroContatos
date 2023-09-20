@@ -1,0 +1,99 @@
+ASP.NET Core Web App (Model View Controller)
+
+bootstrp 4.6
+http://www.sha1-online.com/
+Configure for HTTPS
+
+[X]Enable Razon Runtime Compilation
+
+Executar no Console do Gerenciador de Pacotes
+
+# Criando Migration da Tabela Contatos
+$ Add-Migration CriandoTabelaContatos -Context BancoContext
+
+# Criando BD e Fazendo Update pós da Migration
+$ Update-Database -Context BancoContext
+
+Appsetting.josn Arquivo de Configuração(BD)
+
+wwwroot -> Assets
+
+Program.cs -> Arranque do Projeto
+
+Startup.cs Configuração Padrao ao Executar Projeto
+
+O Raxor permite que você escrevo uma ml'tura de c0dlgo HTML e do lado servido usando C3 e do do u.ando C'
+
+shared = (Views/Template)
+
+Clicar como Direito em Model
+Add new Class
+Nomear
+
+Atalho prop
+Usar Atalho do IntelliSense prop -> Para Criar Atributos do Objeto
+O Preenchimento de código com Ctrl+Space(Sugestoes)
+
+
+Mexer nos arquivos 
+Contato Controler
+Index.csjtml
+
+
+
+Clicar com o direito 
+em return view 
+Add new item Razon View Empty
+
+
+Clicar em cima do nome do projeto 
+Ir gerenciado de pacotes do nuget
+
+Microsoft.EntityFrameworkCore
+Microsoft.EntityFrameworkCore.Design
+Microsoft.EntityFrameworkCore.Tools
+Microsoft.EntityFrameworkCore.SqlServer
+
+Criar pasta Data Para arquivos REFERENE A BANCO DE DADOS
+
+Adicionar Referencia/Using do BD e Model no Banco Context
+
+Add COnfiguraçao do bANCO DE DADOS E service do MicrosftEntirySql no Startup 
+
+app setting.json
+
+Adiiconar String de Conexao do Banco de Dados
+
+
+DESKTOP-7JNQVD9\gabri
+
+Criar Migration
+
+Clicar em Tolls/Ferramentas
+Console do Package Manager
+Cria Migration
+Add-Migration CriandoTabelaContatos -Context BancoContext
+
+Cria a Table no bANCO DE DADOS apartir da migration
+Update-Database -Context BancoContext
+
+
+Criar Pasta Repositorio
+
+Table Usuarios
+
+Id
+Nome
+Email
+Perfil
+Senha
+DataCadastro
+DataAtualizacao
+
+
+Table Contatos
+
+Id
+Nome
+Email
+Celular
