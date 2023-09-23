@@ -73,7 +73,8 @@ namespace SistemaCadastroContatos.Controllers
             }
         }
 
-        [HttpPost] IActionResult EnviarLinkParaRedefinirSenha(RedefinirSenhaModel redefinirSenhaModel)
+        [HttpPost]
+        public IActionResult EnviarLinkParaRedefinirSenha(RedefinirSenhaModel redefinirSenhaModel)
         {
             try
             {
@@ -84,9 +85,10 @@ namespace SistemaCadastroContatos.Controllers
 
                     if (usuario != null)
                     {
+                        string novaSenha = usuario.GerarNovaSenha();
+
                         TempData["MensagemSucesso"] = $"Enviamos para seu E-mail cadastrado uma nova senha.";
                         return RedirectToAction("Index", "Login");
-
                     }
 
                     TempData["MensagemErro"] = $"Nao conseguimos redefinir sua senha. Por favor, verifique os dados informados.";
