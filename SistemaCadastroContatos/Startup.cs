@@ -37,6 +37,8 @@ namespace SistemaCadastroContatos
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
             services.AddScoped<ISessao, Sessao>();
+            services.AddScoped<IEmail, Email>();
+
 
             services.AddSession(o =>
             {
