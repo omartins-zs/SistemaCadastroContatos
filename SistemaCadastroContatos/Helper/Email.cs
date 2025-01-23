@@ -45,9 +45,10 @@ namespace SistemaCadastroContatos.Helper
             catch (System.Exception e)
             {
                 // Gravar Log de erro ao Enviar E-mail
+                return false;
             }
 
-           // throw new System.NotImplementedException();
+            // throw new System.NotImplementedException();
         }
     }
 }
