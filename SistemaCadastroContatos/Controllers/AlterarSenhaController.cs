@@ -11,12 +11,12 @@ namespace SistemaCadastroContatos.Controllers
 {
     public class AlterarSenhaController : Controller
     {
-        private readonly IUsuarioRepositorio _usuarioRepositorio;
+        private readonly IUsuarioRepository _usuarioRepository;
         private readonly ISessao _sessao;
-        public AlterarSenhaController(IUsuarioRepositorio usuarioRepositorio,
+        public AlterarSenhaController(IUsuarioRepository usuarioRepository,
                                       ISessao sessao)
         {
-            _usuarioRepositorio = usuarioRepositorio;
+            _usuarioRepository = usuarioRepository;
             _sessao = sessao;
         }
 
@@ -30,11 +30,11 @@ namespace SistemaCadastroContatos.Controllers
         {
             try
             {
-                UsuarioModel usuarioLogado = _sessao.BuscarSessaoDoUsuario();
+                UsuarioModel usuarioLogado = _sessao.BuscarSessionDoUsuario();
                 alterarSenhaModel.Id = usuarioLogado.Id;
                 if (ModelState.IsValid)
                 {
-                    _usuarioRepositorio.AlterarSenha(alterarSenhaModel);
+                    _usuarioRepository.AlterarSenha(alterarSenhaModel);
                     TempData["MensagemSucesso"] = "Senha alterada com sucesso!";
                     return View("Index", alterarSenhaModel);
                 }
