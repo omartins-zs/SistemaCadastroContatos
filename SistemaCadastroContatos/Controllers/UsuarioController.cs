@@ -26,12 +26,12 @@ namespace SistemaCadastroContatos.Controllers
         }
         public IActionResult ApagarConfirmacao(int id)
         {
-            UsuarioModel usuario = _usuarioRepository.ListarPorId(id);
+            UsuarioModel usuario = _usuarioRepository.BuscarPorID(id);
             return View(usuario);
         }
         public IActionResult Editar(int id)
         {
-            UsuarioModel usuario = _usuarioRepository.ListarPorId(id);
+            UsuarioModel usuario = _usuarioRepository.BuscarPorID(id);
             return View(usuario);
         }
 
