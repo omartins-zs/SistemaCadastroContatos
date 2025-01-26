@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SistemaCadastroContatos.Filters;
+using SistemaCadastroContatos.Helper;
 using SistemaCadastroContatos.Models;
 using SistemaCadastroContatos.Repositories;
 using System.Collections.Generic;
@@ -10,13 +11,17 @@ namespace SistemaCadastroContatos.Controllers
     public class ContatoController : Controller
     {
         private readonly IContatoRepository _contatoRepository;
-        public ContatoController(IContatoRepository contatoRepository)
+        private readonly ISessao _sessao;
+        public ContatoController(IContatoRepository contatoRepository,
+                                 ISessao sessao)
         {
             _contatoRepository = contatoRepository;
+            _sessao = sessao;
         }
         public IActionResult Index()
         {
-            List<ContatoModel> contatos = _contatoRepository.BuscarTodos();
+            UsuarioModel usuarioLogado = _sessao.BuscarSessionDoUsuario();
+            List<ContatoModel> contatos = _contatoRepository.BuscarTodos(usuarioLogado.Id);
             return View(contatos);
         }
 
@@ -27,13 +32,13 @@ namespace SistemaCadastroContatos.Controllers
 
         public IActionResult Editar(int id)
         {
-            ContatoModel contato = _contatoRepository.ListarPorId(id);
+            ContatoModel contato = _contatoRepository.BuscarPorID(id);
             return View(contato);
         }
 
         public IActionResult ApagarConfirmacao(int id)
         {
-            ContatoModel contato = _contatoRepository.ListarPorId(id);
+            ContatoModel contato = _contatoRepository.BuscarPorID(id);
             return View(contato);
         }
 

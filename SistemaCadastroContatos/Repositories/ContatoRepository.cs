@@ -1,5 +1,6 @@
 ﻿using SistemaCadastroContatos.Data;
 using SistemaCadastroContatos.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,31 +13,28 @@ namespace SistemaCadastroContatos.Repositories
         {
             _bancoContext = bancoContext;
         }
-        public ContatoModel ListarPorId(int id)
+        public ContatoModel BuscarPorID(int id)
         {
             return _bancoContext.Contatos.FirstOrDefault(x => x.Id == id);
-
         }
 
-        public List<ContatoModel> BuscarTodos()
+        public List<ContatoModel> BuscarTodos(int usuarioId)
         {
-            return _bancoContext.Contatos.ToList();
+            return _bancoContext.Contatos.Where(x => x.UsuarioId == usuarioId).ToList();
         }
 
         public ContatoModel Adicionar(ContatoModel contato)
         {
-            //  Adicionar no banco de dados
             _bancoContext.Contatos.Add(contato);
             _bancoContext.SaveChanges();
-
             return contato;
         }
 
         public ContatoModel Atualizar(ContatoModel contato)
         {
-            ContatoModel contatoDB = ListarPorId(contato.Id);
+            ContatoModel contatoDB = BuscarPorID(contato.Id);
 
-            if (contatoDB == null) throw new System.Exception("Houve um erro na atualizaçao do contato");
+            if (contatoDB == null) throw new Exception("Houve um erro na atualização do contato!");
 
             contatoDB.Nome = contato.Nome;
             contatoDB.Email = contato.Email;
@@ -50,9 +48,9 @@ namespace SistemaCadastroContatos.Repositories
 
         public bool Apagar(int id)
         {
-            ContatoModel contatoDB = ListarPorId(id);
+            ContatoModel contatoDB = BuscarPorID(id);
 
-            if (contatoDB == null) throw new System.Exception("Houve um erro na deleção do contato");
+            if (contatoDB == null) throw new Exception("Houve um erro na deleção do contato!");
 
             _bancoContext.Contatos.Remove(contatoDB);
             _bancoContext.SaveChanges();
