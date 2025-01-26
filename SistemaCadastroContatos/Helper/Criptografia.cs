@@ -10,8 +10,10 @@ namespace SistemaCadastroContatos.Helper
         public static string GerarHash(this string valor)
         {
             var hash = SHA1.Create();
-            var enconding = new ASCIIEncoding();
-            var array = enconding.GetBytes(valor);
+            var encoding = new ASCIIEncoding();
+            var array = encoding.GetBytes(valor);
+
+            array = hash.ComputeHash(array);
 
             var strHexa = new StringBuilder();
 
@@ -19,6 +21,7 @@ namespace SistemaCadastroContatos.Helper
             {
                 strHexa.Append(item.ToString("x2"));
             }
+            
             return strHexa.ToString();
         }
     }
