@@ -1,6 +1,7 @@
 ﻿using SistemaCadastroContatos.Enums;
 using SistemaCadastroContatos.Helper;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace SistemaCadastroContatos.Models
@@ -22,6 +23,7 @@ namespace SistemaCadastroContatos.Models
         public DateTime DataCadastro { get; set; }
         public DateTime? DataAtualizacao { get; set; }
 
+        public virtual List<ContatoModel> Contatos { get; set; }
         public bool SenhaValida(string senha)
         {
             return Senha == senha.GerarHash();
