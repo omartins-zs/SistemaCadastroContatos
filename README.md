@@ -54,16 +54,17 @@ Caso precise verificar ou gerar hashes para testes, utilize o seguinte recurso o
 👉 [SHA1 Encrypt/Decrypt Tool](https://10015.io/tools/sha1-encrypt-decrypt)
 
 
-## 📝 Pacotes do Nuget e Extensões
+## 📝 Pacotes do NuGet e Extensões
 
 <i>
 
-* Microsoft.EntityFrameworkCore -> Para utilizar Entity Framework
-* Microsoft.EntityFrameworkCore.Design -> Componentes de tempo de design compartilhado
-* Microsoft.EntityFrameworkCore.SqlServer -> Para utilizar Migrations SQL e Salvar dados no BD
-* Microsoft.EntityFrameworkCore.Tools -> Ferramentas do EntityFrameworkCore
- 
- <hr>
+* **Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation 5.0.15** ->
+* **Microsoft.EntityFrameworkCore 5.0.15** -> Para utilizar Entity Framework  
+* **Microsoft.EntityFrameworkCore.Design 5.0.15** -> Componentes de tempo de design compartilhado  
+* **Microsoft.EntityFrameworkCore.SqlServer 5.0.15** -> Para utilizar Migrations SQL e salvar dados no BD  
+* **Microsoft.EntityFrameworkCore.Tools 5.0.15** -> Ferramentas do EntityFrameworkCore  
+
+<hr>
  
 * HTML Snippet Pack
  
