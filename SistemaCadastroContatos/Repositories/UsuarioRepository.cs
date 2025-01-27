@@ -3,6 +3,7 @@ using SistemaCadastroContatos.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace SistemaCadastroContatos.Repositories
 {
@@ -32,7 +33,9 @@ namespace SistemaCadastroContatos.Repositories
 
         public List<UsuarioModel> BuscarTodos()
         {
-            return _bancoContext.Usuarios.ToList();
+            return _bancoContext.Usuarios
+                .Include(x => x.Contatos)
+                .ToList();
         }
 
         public UsuarioModel Adicionar(UsuarioModel usuario)
