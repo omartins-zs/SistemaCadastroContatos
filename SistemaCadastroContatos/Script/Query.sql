@@ -37,3 +37,25 @@ INSERT INTO [dbo].[Usuarios]
             GETDATE(),                      -- DataCadastro (data atual)
             GETDATE())                      -- DataAtualizacao (data atual)
 GO
+
+
+
+
+USE [DB_SistemaContatos]
+GO
+
+UPDATE [dbo].[Usuarios]
+   SET [Senha] = '7c222fb2927d828af22f592134e8932480637c0d', -- Nova senha
+       [DataAtualizacao] = GETDATE()                        -- Atualiza a data de modificação
+ WHERE [Login] = 'gabriel'                                  -- Critério de pesquisa para identificar o usuário
+GO
+
+
+
+select * from Usuarios
+
+
+select * from Contatos
+
+
+UPDATE Contatos set UsuarioId = 1
