@@ -33,6 +33,12 @@
   ✅ Sistema Cadastro de Contatos 📞📄✔️☎️  Concluido ✅ 
    
  </h4>
+
+## 🚀 Tecnologias Utilizadas
+
+- **.NET:** Versão 5.0  
+- **Pacotes NuGet:** Versão 5.0.15  
+- **Visual Studio:** 2019
  
 ## 🔑 **Credenciais de Acesso**
 
