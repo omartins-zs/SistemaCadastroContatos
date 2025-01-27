@@ -2,6 +2,7 @@
 using SistemaCadastroContatos.Filters;
 using SistemaCadastroContatos.Models;
 using SistemaCadastroContatos.Repositories;
+using System;
 using System.Collections.Generic;
 
 namespace SistemaCadastroContatos.Controllers
@@ -10,6 +11,14 @@ namespace SistemaCadastroContatos.Controllers
     public class UsuarioController : Controller
     {
         private readonly IUsuarioRepository _usuarioRepository;
+        private readonly IContatoRepository _contatoRepository;
+
+        public UsuarioController(IUsuarioRepository usuarioRepository,
+                                 IContatoRepository contatoRepository)
+        {
+            _usuarioRepository = usuarioRepository;
+            _contatoRepository = contatoRepository;
+        }
         public UsuarioController(IUsuarioRepository usuarioRepository)
         {
             _usuarioRepository = usuarioRepository;
@@ -24,12 +33,13 @@ namespace SistemaCadastroContatos.Controllers
         {
             return View();
         }
-        public IActionResult ApagarConfirmacao(int id)
+        public IActionResult Editar(int id)
         {
             UsuarioModel usuario = _usuarioRepository.BuscarPorID(id);
             return View(usuario);
         }
-        public IActionResult Editar(int id)
+
+        public IActionResult ApagarConfirmacao(int id)
         {
             UsuarioModel usuario = _usuarioRepository.BuscarPorID(id);
             return View(usuario);
@@ -41,24 +51,20 @@ namespace SistemaCadastroContatos.Controllers
             {
                 bool apagado = _usuarioRepository.Apagar(id);
 
-                if (apagado)
-                {
-                    TempData["MensagemSucesso"] = "Usuario excluido com sucesso";
-
-                }
-                else
-                {
-                    TempData["MensagemErro"] = $"Ops, nao conseguimos apagar seu usuario";
-                }
+                if (apagado) TempData["MensagemSucesso"] = "Usuário apagado com sucesso!"; else TempData["MensagemErro"] = "Ops, não conseguimos apagar seu usuário, tente novamante!";
                 return RedirectToAction("Index");
-
             }
-            catch (System.Exception erro)
+            catch (Exception erro)
             {
-                TempData["MensagemErro"] = $"Ops, nao conseguimos apagar seu usuario, mais detalhe do erro: {erro.Message} ";
-
+                TempData["MensagemErro"] = $"Ops, não conseguimos apagar seu usuário, tente novamante, detalhe do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
+        }
+
+        public IActionResult ListarContatosPorUsuarioId(int id)
+        {
+            List<ContatoModel> contatos = _contatoRepository.BuscarTodos(id);
+            return PartialView("_ContatosUsuario", contatos);
         }
 
         [HttpPost]
