@@ -77,7 +77,8 @@ Add-Migration CriandoTabelaContatos -Context BancoContext
 Cria a Table no bANCO DE DADOS apartir da migration
 Update-Database -Context BancoContext
 
-
+Add-Migration CriandoVinculoUsuarioNaContato -Context BancoContext
+Update-Database -Context BancoContext
 Criar Pasta Repositorio
 
 Table Usuarios
