@@ -33,6 +33,25 @@
   ✅ Sistema Cadastro de Contatos 📞📄✔️☎️  Concluido ✅ 
    
  </h4>
+ 
+## 🔑 **Credenciais de Acesso**
+
+Utilize as credenciais abaixo para acessar o sistema e explorar suas funcionalidades:
+
+### 🛠️ **Administrador**
+- **Login:** `admin`  
+- **Senha:** `admin`  
+
+### 👤 **Usuário Padrão**
+- **Login:** `gabriel`  
+- **Senha:** `12345`  
+
+---
+
+### 🔒 **Sobre a Segurança**
+As senhas no sistema são protegidas utilizando o algoritmo de criptografia **SHA1**.  
+Caso precise verificar ou gerar hashes para testes, utilize o seguinte recurso online:  
+👉 [SHA1 Encrypt/Decrypt Tool](https://10015.io/tools/sha1-encrypt-decrypt)
 
 
 ## 📝 Pacotes do Nuget e Extensões
