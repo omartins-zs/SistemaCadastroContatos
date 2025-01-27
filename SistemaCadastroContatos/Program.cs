@@ -18,7 +18,7 @@ namespace SistemaCadastroContatos
                     // webBuilder.UseStartup<Startup>();
                     webBuilder.UseStartup<Startup>().UseUrls("http://*:5001");
                     // Descomente a linha abaixo para usar uma URL específica:
-                    // webBuilder.UseUrls("http://localhost:5001");
+                     webBuilder.UseUrls("http://localhost:5001");
                 })
                 .ConfigureLogging(logging =>
                 {
