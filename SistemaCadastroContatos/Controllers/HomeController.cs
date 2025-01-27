@@ -13,14 +13,9 @@ namespace SistemaCadastroContatos.Controllers
     [PageUsuarioLogado]
     public class HomeController : Controller
     {
-
         public IActionResult Index()
         {
-            HomeModel home = new HomeModel();
-            home.Nome = "Gabriel Martins";
-            home.Email = "gabrielmartinsdev@gamil.com";
-
-            return View(home);
+            return View();
         }
 
         public IActionResult Privacy()
